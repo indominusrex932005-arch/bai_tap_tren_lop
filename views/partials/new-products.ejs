@@ -1,4 +1,5 @@
-<div class="beta-products-list">
+<% /* Bản cũ giữ lại để tham khảo - không chạy */ if (false) { %>
+<!-- <div class="beta-products-list">
 	<h4>Sản phẩm mới</h4>
 	<div class="beta-products-details">
 		<p class="pull-left"><%= products.length %> sản phẩm</p>
@@ -12,4 +13,24 @@
 	</div>
 	<% if (i + 4 < products.length) { %><div class="space40">&nbsp;</div><% } %>
 	<% } %>
-</div><!-- .beta-products-list -->
+</div>.beta-products-list -->
+<% } %>
+
+<section class="beta-products-list" aria-labelledby="new-products-title">
+    <h4 id="new-products-title">Sản phẩm mới</h4>
+    <div class="beta-products-details">
+        <p class="pull-left"><%= products.length %> sản phẩm</p>
+        <div class="clearfix"></div>
+    </div>
+    <% if (products.length === 0) { %>
+        <p class="empty-products">Chưa có sản phẩm mới.</p>
+    <% } %>
+    <% for (var i = 0; i < products.length; i += 4) { %>
+    <div class="row">
+        <% products.slice(i, i + 4).forEach(function (product) { %>
+        <%- include('product-card', { product }) %>
+        <% }) %>
+    </div>
+    <% if (i + 4 < products.length) { %><div class="space40">&nbsp;</div><% } %>
+    <% } %>
+</section>
