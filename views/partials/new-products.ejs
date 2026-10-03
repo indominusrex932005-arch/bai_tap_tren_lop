@@ -1,0 +1,15 @@
+<div class="beta-products-list">
+	<h4>Sản phẩm mới</h4>
+	<div class="beta-products-details">
+		<p class="pull-left"><%= products.length %> sản phẩm</p>
+		<div class="clearfix"></div>
+	</div>
+	<% for (var i = 0; i < products.length; i += 4) { %>
+	<div class="row">
+		<% products.slice(i, i + 4).forEach(function (product) { %>
+		<%- include('product-card', { product: product }) %>
+		<% }) %>
+	</div>
+	<% if (i + 4 < products.length) { %><div class="space40">&nbsp;</div><% } %>
+	<% } %>
+</div><!-- .beta-products-list -->
